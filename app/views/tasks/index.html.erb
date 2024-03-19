@@ -5,7 +5,12 @@
 <%= search_form_for @q do |f| %>
 
   <%= f.label :title_or_description_cont, "キーワード" %>
-  <%= f.search_field :title_or_description_cont%>
+  <%= f.search_field :title_or_description_cont %>
+
+  <%= f.label :deadline, "期間" %>
+  <%= f.date_field :deadline_gteq %>
+  <span>~</span>
+  <%= f.date_field :deadline_lteq %>
 
   <%= f.submit %>
 <% end %>
@@ -28,9 +33,9 @@
         <td><%= task.description %></td>
         <td><%= task.status %></td>
         <td><%= task.deadline.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Show", task %></td>
+        <td><%= link_to "Edit", edit_task_path(task) %></td>
+        <td><%= link_to "Destroy", task, method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +43,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to "New Task", new_task_path %>
